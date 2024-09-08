@@ -5,7 +5,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.filters.command import Command
 from aiogram.filters.state import State, StatesGroup
 from config import bot_token
-import balance
+import balance, stock
 
 logging.basicConfig(level=logging.INFO)
 
@@ -19,4 +19,5 @@ async def run_bot():
     bot = Bot(bot_token)
 
     dp.include_router(balance.router)
+    dp.include_router(stock.router)
     await dp.start_polling(bot)

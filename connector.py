@@ -4,6 +4,7 @@ connection_string = "host=localhost dbname=cashflow user=postgres password=secre
 
 def select(query: str) -> list:
     """ Select query to PG """
+
     with pg.connect(connection_string) as conn:
         cur = conn.cursor()
         cur.execute(query)
@@ -11,6 +12,7 @@ def select(query: str) -> list:
 
 def update(query: str):
     """ Update query to PG """
+
     with pg.connect(connection_string) as conn:
         cur = conn.cursor()
         cur.execute(query)
@@ -18,6 +20,7 @@ def update(query: str):
 
 def insert(query: str):
     """ Insert query to PG """
+
     with pg.connect(connection_string) as conn:
         cur = conn.cursor()
         cur.execute(query)

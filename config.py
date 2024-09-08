@@ -1,1 +1,1 @@
-bot_token = "super-token"
+bot_token = "token"
