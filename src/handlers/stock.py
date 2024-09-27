@@ -4,8 +4,6 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
-from api import get_balance, transaction
-
 class EditState(StatesGroup):
     choose_stock = State()
     edit_sum = State()
@@ -37,7 +35,7 @@ async def cmd_stock(message: Message, state: FSMContext):
 @router.callback_query(lambda x: F.data in ['GR', 'OK', 'ON', 'MY'])
 async def cmd_enter_sum(callback: CallbackQuery, state: FSMContext):
     await callback.message.edit_text(
-        text=f"Укажите количество акций для покупки"
+        text="Укажите количество акций для покупки"
     )
     await state.set_state(EditState.edit_sum)
     await callback.answer()
