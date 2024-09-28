@@ -17,6 +17,18 @@ class Api:
         """
         return self.conn.select(query)[0][0]
 
+    def get_format_balance(self, user_id: int) -> str:
+        """ Current formated user`s balance """
+
+        game_id = today_int()
+        query = f"""
+        select sum(value) as balance
+        from transaction
+        where game_id = {game_id} and user_id = {user_id}
+        """
+        balance = self.conn.select(query)[0][0]
+        return '{0:,}'.format(balance).replace(',', '.')
+
     def transaction(self, user_id:int, value: int, desc: str = None) -> None:
         """ Transaction """
 
